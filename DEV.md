@@ -1,0 +1,45 @@
+## DESIGN
+- `SimulationConfiguration` class --> general container that stores configuration stuff
+    - Can be saved to settings
+    - General things, like "prioritize X abilities", "auto-discover multi-attack", "use items", etc.
+    - Resource Usage
+        - None (do not use spell slots, class resources)
+        - Low (2 spell slots of {max spell slot lvl / 3} rounded up, {max class resources / 3} rounded up)
+        - Medium (4 spell slots of {max spell slot lvl / 2} rounded up, {max class resources / 2} rounded up)
+        - High (all spell slots, all class resources)
+- `ActorConfiguration` class --> stores information about how a specific actor should behave
+    - Prioritize X ability over Y ability
+    - Give the ability to predetermine an order of abilities to use each turn
+    - Specify which resources to allocate for the battle
+    - Fields
+        - abilities[] --> an array of `AbilityConfigurations`
+            - Should be ordered by priority at some point
+            - On this actor's turn, grab the abilities[] (ordered via the actionsStrategy) and perform them from the top down, if possible
+        - defaultAbilityId/index --> (when defined) when in doubt, falls back to this ability (tries to find highest DPS resource-less ability by default)
+        - locationStrategy --> which location strategy to use
+        - actionsStrategy --> which actions strategy to use
+            - Use this to determine the order that the abilities[] field returns available abilities in
+    - Combat Strategy Templates
+        - Location (sliders?)
+            - Ranged (stays on outskirts of battle)
+            - Melee (goes where the battle is most fierce)
+            - Skirmisher (wades in and out of battle)
+        - Actions
+            - Striker (prioritizes single-target damage)
+            - Nuker (prioritizes AoE damage)
+            - Controller (prioritizes debuffs/area control)
+            - Support (prioritizes buffs/heals)
+        - Resource Usage
+            - Inherit (use the general configuration settings)
+            - None (do not use spell slots, class resources)
+            - Low ({max slots / 3} spell slots of {max spell slot lvl / 3} rounded up, {max class resources / 3} rounded up)
+            - Medium ({max slots / 2} spell slots of {max spell slot lvl / 2} rounded up, {max class resources / 2} rounded up)
+            - High (all spell slots, all class resources)
+            - Custom (specify which resources and class abilities to use, and how much of them to use)
+- `AbilityConfiguration` class --> keeps track of the ability and when to use it
+    - Fields
+        - resourceConfiguration --> a `AbilityResourceConfiguration` for that ability
+- `AbilityResourceConfiguration` class (or just interface/type) --> stores information about how a resource should be used
+    - resourceId --> id of the resource (primary, secondary, spell slot, feature id, etc.)
+    - resourceMax --> the maximum value of the resource
+    - numberOfUsableResources --> number of resources that can be used in this combat

@@ -1,0 +1,29 @@
+{
+  "name": "dnd5e-combat-simulator",
+  "title": "D&D5e Combat Simulator",
+  "description": "Simulate combats!",
+  "author": "NateHawk85",
+  "version": "Replaced",
+  "minimumCoreVersion": "9.269",
+  "compatibleCoreVersion": "9.269",
+  "url": "Replaced",
+  "manifest": "https://github.com/NateHawk85/dnd5e-combat-simulator/releases/latest/download/module.json",
+  "download": "Replaced",
+  "bugs": "https://github.com/NateHawk85/dnd5e-combat-simulator/issues",
+  "changelog": "https://github.com/NateHawk85/dnd5e-combat-simulator/releases",
+  "license": "https://raw.githubusercontent.com/NateHawk85/dnd5e-combat-simulator/main/LICENSE",
+  "readme": "https://raw.githubusercontent.com/NateHawk85/dnd5e-combat-simulator/main/README.md",
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "styles": [
+    "styles/dnd5e-combat-simulator.css"
+  ],
+  "esmodules": [
+    "main.js"
+  ]
+}
