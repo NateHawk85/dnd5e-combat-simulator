@@ -12,7 +12,7 @@ jest.mock('../../main/scripts/api', () => ({
     registerApi: registerApi
 }));
 
-test('WHEN main.ts is run THEN module-profile settings are registered', () =>
+test('WHEN main.ts is run THEN module settings are registered', () =>
 {
     require('../../main/scripts/main');
 

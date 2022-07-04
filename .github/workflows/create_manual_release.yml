@@ -68,10 +68,10 @@ jobs:
         env:
           version: ${{github.event.inputs.release_version}}
           url: https://github.com/${{github.repository}}
-          download: https://github.com/${{github.repository}}/releases/download/${{github.event.inputs.release_version}}/module-profiles.zip
+          download: https://github.com/${{github.repository}}/releases/download/${{github.event.inputs.release_version}}/dnd5e-combat-simulator.zip
 
       - name: Create release module .zip file
-        run: cd dist && zip -r ../module-profiles.zip .
+        run: cd dist && zip -r ../dnd5e-combat-simulator.zip .
 
       - name: Create release with files
         id: create_version_release
@@ -81,6 +81,6 @@ jobs:
           draft: ${{github.event.inputs.is_draft}}
           prerelease: ${{github.event.inputs.is_pre_release}}
           token: ${{secrets.GITHUB_TOKEN}}
-          artifacts: './dist/module.json, ./module-profiles.zip'
+          artifacts: './dist/module.json, ./dnd5e-combat-simulator.zip'
           tag: ${{github.event.inputs.release_version}}
           body: ${{steps.tag_version.outputs.changelog}}

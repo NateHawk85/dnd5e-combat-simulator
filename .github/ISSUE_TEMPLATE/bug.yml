@@ -13,7 +13,7 @@ body:
     id: description
     attributes:
       label: Describe the Bug
-      placeholder: What happpened?
+      placeholder: What happened?
     validations:
       required: true
   - type: textarea
@@ -65,9 +65,9 @@ body:
     validations:
       required: true
   - type: input
-    id: module-profiles-version
+    id: dnd5e-combat-simulator-version
     attributes:
-      label: Module Profiles Version
+      label: D&D5e Combat Simulator Version
       placeholder: (ex. v1.0.0)
     validations:
       required: true
@@ -98,6 +98,6 @@ body:
     attributes:
       label: Installed Modules + Additional Info
       value: |
-        - Module Profiles v1.0.0
+        - D&D5e Combat Simulator v1.0.0
     validations:
       required: true
